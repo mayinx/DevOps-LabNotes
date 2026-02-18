@@ -1,5 +1,11 @@
 # ⎈ Helm: The Kubernetes Package Manager
 
+> **The Gist:** Helm is the YAML modeling engine for K8s. 
+> * **Charts:** Think of these as Classes.
+> * **Values.yaml:** Think of these as the Variables you pass to the class.
+> * **Release:** The actual Object (instance) running in the cluster.
+> * **Why?** To stop maintaining three identical sets of YAML for Dev, Staging, and Prod.
+
 Helm is the "apt-get" or "pip" of Kubernetes. It allows you to package, share, and deploy applications as a single unit called a **Chart**.
 
 ---
