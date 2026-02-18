@@ -1,5 +1,6 @@
 # 🧪 DevOps-LabNotes
 
+*The DevOps Chronicles: A curated evolution of lab notes and architectural patterns.*
 A curated collection of practical guides, configuration patterns, and "Aha!" moments gathered while building and breaking distributed systems.
 
 ---
@@ -11,6 +12,8 @@ A curated collection of practical guides, configuration patterns, and "Aha!" mom
 * [Internal Networking](k8s/networking.md) - DNS, ClusterIP, and Ingress logic.
 * [Helm Guide](k8s/helm-guide.md) — *Templating manifests and removing Tiller.*
 * [Autoscaling Logic](k8s/autoscaling.md) — *Deep dive into HPA, VPA, and Cluster Autoscalers.*
+* [🛠️ K8s: Operations](k8s/operations.md) — **NEW:** The 10 most common daily DevOps tasks.
+* [🚑 K8s: Troubleshooting](k8s/troubleshooting.md) — **NEW:** Fixing CrashLoops, Pending pods, and Networking gaps.
 
 ### [🐳 Docker](docker/README.md)
 * [Compose Patterns](docker/compose.md) - Standard structures for local dev.

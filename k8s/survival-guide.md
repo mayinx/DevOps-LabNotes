@@ -1,6 +1,8 @@
 
 # ☸️ Kubernetes "Master Glue" & Survival Guide
 
+For a DevOps engineer, Kubernetes is the "Operating System" of the data center. Your job isn't just to keep it running, but to ensure that developers can ship code without worrying about the underlying hardware.
+
 ## 🔍 Part 1: Cluster Introspection (What am I running?)
 Use these to understand the boundaries and components of your current environment.
 
@@ -87,6 +89,12 @@ If you get "Address already in use":
 * `kubectl describe pod [name]` : Check the "Events" list for crash reasons.
 * `kubectl port-forward svc/[name] 8080:[svc-port]` : **Tunnel Logic:** `Localhost:8080` -> `Service:Port`.
 
+### ⎈ Helm (Package Management)
+* `helm list -A` : See all installed "Releases" across the cluster.
+* `helm install [name] [chart] -f values.yaml` : Deploy a package with custom settings.
+* `helm upgrade [name] [chart]` : Update an existing deployment.
+* `helm uninstall [name]` : Remove everything associated with the app.
+
 ### 🔐 Secrets & Data
 * **Decode Secret:** `kubectl get secret [name] -o jsonpath='{.data}'` (Then Pipe to base64).
 * **Verify Config:** `kubectl exec [pod-name] -- env` (See all variables actually inside the pod).
@@ -118,8 +126,6 @@ Don't use a Deployment for everything. Match the tool to the behavior.
 
 ---
 
----
-
 ## 🚦 Part 7: The "Status" Decoder Ring
 What to do when `kubectl get pods` looks ugly.
 
@@ -144,6 +150,7 @@ If Kubernetes is a city, here is the map:
 * **Namespace**: A "Gated Community." It lets you slice one Cluster into multiple virtual ones (e.g., `development` vs `production`) so they don't interfere.
 * **Ingress**: The "City Gate." It’s the entry point that manages how people from the outside world get into your Services inside the cluster.
 * **Control Plane**: The "City Hall." This is the collection of background processes that make decisions, handle events, and store the "truth" of the cluster.
+* **Helm**: The "App Store" or "Package Manager." It bundles multiple K8s objects (Service, Deployment, Ingress) into a single **Chart** so you can install/update them all at once.
 
 ### 📡 Service Types (The Internal Wiring)
 * **ClusterIP (Default)**: Internal "Private" IP. Reachable only by other Pods inside the cluster.
@@ -187,3 +194,6 @@ Kubernetes is **Declarative**, not Imperative. You don't tell K8s "Start a pod."
 ### Pro-Tip 5 (Probe Logic):
 * Always use a **Readiness Probe** for apps that take time to start up (like Java or heavy APIs). 
 * Be careful with **Liveness Probes**—if you point them at a database that is temporarily down, K8s might enter a "Restart Loop" and never recover!
+
+### Pro-Tip 6 (Helm 3 vs 2):
+If you see old tutorials mentioning **Tiller**, ignore them. Helm 3 is "client-only." It talks directly to the K8s API using your permissions. This makes it much more secure and easier to manage than the old version.

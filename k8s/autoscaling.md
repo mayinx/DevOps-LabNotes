@@ -1,5 +1,10 @@
 # 📈 Kubernetes Autoscaling: The Trinity
 
+> **The Gist:** The Autoscaling Trinity ensures your app stays up and your costs stay down.
+> * **HPA (Horizontal):** Changes the **count** of Pods. (Scale out/in).
+> * **VPA (Vertical):** Changes the **size** of Pods (CPU/RAM). (Scale up/down).
+> * **CA (Cluster):** Changes the **count** of Nodes (VMs). (Scale infrastructure).
+
 Kubernetes can scale your application automatically based on demand. There are three distinct layers of scaling that work together.
 
 ---
